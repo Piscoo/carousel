@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="./carousel.js"></script>
+</head>
+<body>
+    <section class="content secthree">
+        <h2 class="title">轻松操作，一键式视频剪辑体验</h2>
+        <div class="subtitle">
+            <div class="difbox">
+              <div>对比度、饱和度、亮度、色调、高光和阴影等参数自由调节，</div>
+              <div>精确的数值变化让你更加得心应手，同一视频赋予多样风格，日系、复古或欧美，由你做主！</div>
+            </div>
+            <div class="difbox">
+              <div>设有两条画中画视频轨道，自由地在视频嵌入多个画面</div>
+              <div>做出分屏视频效果，在视频里加入图片、表情包等自定义元素，将剪辑化繁为简</div>
+            </div>
+            <div class="difbox">
+              <div>实用的视频去水印功能，去水印效果自然不突兀</div>
+              <div>一键添加马赛克即可遮挡水印、Logo和标识，可分段去水印，保护画面人物隐私</div>
+            </div>
+            <div class="difbox">
+              <div>运用人工智能识别技术，语音文字一键互转，高效处理</div>
+              <div>准确率高，转换速度快，批量添加字幕；智能配音，支持多语言、人声选择和速度调整</div>
+            </div>
+            <div class="difbox">
+              <div>内置录音和录屏功能，让剪辑锦上添花</div>
+              <div>声画同步录制屏幕，录好马上后期剪辑，简单快捷；边预览边配音，人声增强自动降噪</div>
+            </div>
+        </div>
+        <div class="botbox">
+          <div class="mainbox">
+            <div class="left switchBtn">
+                <img id="prev-stack" class="btn leftBtn" src="./img/right.svg" alt="">
+            </div>
+            <div class="imgbox">
+              <div class="horizontal demo1">
+                  <ul class="container">
+                      <li class="cards_list">
+                          <div class="img">
+                              <img src="./img/colorImg.jpg" alt="蜜蜂剪辑视频调色">
+                          </div>
+                      </li>
+                      <li class="cards_list">
+                          <div class="img">
+                              <img src="./img/drawImg.jpg" alt="蜜蜂剪辑画中画功能">
+                          </div>
+                      </li>
+                      <li class="cards_list">
+                          <div class="img">
+                              <img src="./img/mosaicImg.jpg" alt="蜜蜂剪辑马赛克功能">
+                          </div>
+                      </li>
+                      <li class="cards_list">
+                          <div class="img">
+                              <img src="./img/voiceImg.jpg" alt="蜜蜂剪辑语音文字互转功能">
+                          </div>
+                      </li>
+                      <li class="cards_list">
+                          <div class="img">
+                              <img src="./img/recorderImg.jpg" alt="蜜蜂剪辑录音录屏功能">
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+            </div>
+            <div class="right switchBtn">
+                <img id="next-stack" class="btn rightBtn" src="./img/right.svg" alt="">
+            </div>
+          </div>
+          <div class="itembox">
+            <!-- <div class="item">
+              <div class="img"><img src="./img/special.jpg" alt=""></div>
+              <div class="name">特效素材</div>
+            </div> -->
+            <div class="item active">
+              <div class="img"><img src="./img/color.png" alt=""></div>
+              <div class="name">颜色校正</div>
+            </div>
+            <div class="item">
+              <div class="img"><img src="./img/draw.png" alt=""></div>
+              <div class="name">画中画</div>
+            </div>
+            <div class="item">
+              <div class="img"><img src="./img/mosaic.png" alt=""></div>
+              <div class="name">马赛克</div>
+            </div>
+            <div class="item">
+              <div class="img"><img src="./img/voice.png" alt=""></div>
+              <div class="name">语音文字互换</div>
+            </div>
+            <div class="item">
+              <div class="img"><img src="./img/recorder.png" alt=""></div>
+              <div class="name">录音&录屏</div>
+            </div>
+          </div> 
+        </div>
+    </section>
+
+    <script>
+        window.onload = function() {
+          $(".imgbox .horizontal").each(function (i, e) {
+              $(e).attr("ondragstart", "return false");
+          });
+      
+          var $demo1 = $(".demo1");
+      
+          var carousel1 = new Carousel($demo1.children(".container"), {
+              opacity: 1,
+              scale: [.8],
+              transition: "400ms",
+              isClickCard: true,
+              changeByTab: true,
+              switchBtn: $demo1.parent().siblings(".switchBtn"),
+              isAuto: false,
+              interval: 4000
+          });
+        }
+      </script>
+</body>
+</html>

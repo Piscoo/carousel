@@ -1,0 +1,218 @@
+.content {
+    margin-top: 120px;
+    color: #202020;
+    text-align: center;
+}
+
+.content .title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.content .subtitle {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 40px auto;
+}
+
+@media (max-width: 768px) {
+    .content {
+        margin-top: 70px;
+    }
+
+    .content .title {
+        font-size: 23px;
+        max-width: 85%;
+        margin: 0 auto;
+        line-height: 36px;
+    }
+
+    .content .subtitle {
+        margin: 23px auto 46px;
+        font-size: 15px;
+        line-height: 24px;
+        max-width: 90%;
+        text-align: left;
+        text-align: center;
+    }
+}
+
+.secthree {
+    position: relative;
+}
+
+.secthree .mainbox {
+    width: 70%;
+    max-width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.secthree .mainbox .left,
+.secthree .mainbox .right {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 50%;
+    background-color: #ffe525;
+}
+
+.secthree .mainbox .left img,
+.secthree .mainbox .right img {
+    width: 16px;
+    height: 16px;
+}
+
+.secthree .mainbox .left:hover,
+.secthree .mainbox .right:hover {
+    background-color: #ffb600;
+}
+
+.secthree .mainbox .left img {
+    transform: rotate(180deg);
+}
+
+.secthree .mainbox .imgbox {
+    width: 80%;
+}
+
+.secthree .mainbox .imgbox img {
+    width: 100%;
+}
+
+.secthree .mainbox .imgbox .demo1 {
+    position: relative;
+    width: 100%;
+}
+
+.secthree .mainbox .imgbox .container {
+    position: relative;
+    /* width: 100%; */
+    height: 380px;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.secthree .mainbox .imgbox .container .cards_list {
+    width: 600px;
+    background-color: #f4f4f4;
+    overflow: hidden;
+}
+
+.secthree .mainbox .imgbox .container .cards_list .img img {
+    display: block;
+    width: 600px;
+}
+
+.secthree .itembox {
+    width: 70%;
+    margin: 50px auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.secthree .itembox .item {
+    width: 150px;
+    background: white;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    padding-bottom: 4px;
+}
+
+.secthree .itembox .item.active {
+    padding-bottom: 0;
+    border-bottom: 4px solid #FFE528;
+}
+
+.secthree .itembox .item:not(:first-child) {
+    margin-left: 30px;
+}
+
+.secthree .itembox .img {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin: -30px auto 0;
+    border-radius: 50%;
+    background: #fdf6d6;
+}
+
+.secthree .itembox .img img {
+    width: 35px;
+    vertical-align: middle;
+}
+
+.secthree .itembox .name {
+    margin: 20px 0;
+    white-space: nowrap;
+}
+
+.secthree .difbox:not(:first-child) {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .secthree .mainbox {
+        width: 90%;
+        margin: 20px auto 0;
+    }
+
+    .secthree .mainbox .left,
+    .secthree .mainbox .right {
+        display: none !important;
+    }
+
+    .secthree .mainbox .imgbox {
+        width: 100%;
+    }
+
+    .secthree .mainbox .imgbox img {
+        width: 100%;
+    }
+
+    .secthree .mainbox .imgbox .container {
+        width: 100%;
+        height: 200px;
+    }
+
+    .secthree .mainbox .imgbox .container .cards_list {
+        width: 277px !important;
+    }
+
+    .secthree .mainbox .imgbox .container .cards_list .img img {
+        width: 100%;
+    }
+
+    .secthree .itembox {
+        width: 96%;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        justify-content: space-evenly;
+    }
+
+    .secthree .itembox .item {
+        width: 107px;
+        margin-left: 0px !important;
+        margin-top: 58px;
+    }
+
+    .secthree .itembox .item .img {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        margin: -18px auto 0;
+    }
+
+    .secthree .itembox .item .img img {
+        width: 28px;
+    }
+
+    .secthree .itembox .item .name {
+        font-size: 15px;
+    }
+}
