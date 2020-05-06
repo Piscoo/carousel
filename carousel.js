@@ -75,7 +75,6 @@
             //根据方向确定margin的left或者top值
             if (this.direction == 'horizontal') {
                 this.cssObj.marginLeft = -this.cardSize / 2 + this.offsetDistance * offsetIndex + 'px';
-                // this.cssObj.marginTop = ($('.secthree .container').height() - $('.secthree .container .cards_list').height()) / 2 + 'px';
             } else if (this.direction == 'vertical') {
                 this.cssObj.marginTop = -this.cardSize / 2 + this.offsetDistance * offsetIndex + 'px';
             };
