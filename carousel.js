@@ -1,34 +1,34 @@
 (function (window, undefined) {
     var Carousel = function (ele, obj) {
 
-        this.ele = ele;//ul容器
-        this.cardsList = this.ele.children();//卡片
-        this.cardsNum = this.cardsList.length;//卡片数量 
+        this.ele = ele; //ul容器
+        this.cardsList = this.ele.children(); //卡片
+        this.cardsNum = this.cardsList.length; //卡片数量 
 
-        this.direction = obj.direction ? obj.direction : 'horizontal';//方向判断
-        this.scale = obj.scale;//比例
-        this.transition = obj.transition || '500ms';//过渡
-        this.transformOrigin = obj.transformOrigin;//变形原点
-        this.opacity = obj.opacity;//透明度
-        this.offsetDistance = obj.offsetDistance;//间距偏移值
+        this.direction = obj.direction ? obj.direction : 'horizontal'; //方向判断
+        this.scale = obj.scale; //比例
+        this.transition = obj.transition || '500ms'; //过渡
+        this.transformOrigin = obj.transformOrigin; //变形原点
+        this.opacity = obj.opacity; //透明度
+        this.offsetDistance = obj.offsetDistance; //间距偏移值
 
-        this.switchBtn = obj.switchBtn;//切换按钮
-        this.isClickCard = obj.isClickCard || false;//是否点击卡片切换
-        this.changeByTab = obj.changeByTab || false;//是否点击tab栏切换
-        this.isAuto = obj.isAuto || false;//是否自动轮播
+        this.switchBtn = obj.switchBtn; //切换按钮
+        this.isClickCard = obj.isClickCard || false; //是否点击卡片切换
+        this.changeByTab = obj.changeByTab || false; //是否点击tab栏切换
+        this.isAuto = obj.isAuto || false; //是否自动轮播
         this.interval = obj.interval || 5000;
 
         this.n = 0;
-        this.mediant = Math.floor(this.cardsNum / 2);//中间数
-        this.cardsListArr = [].slice.call(this.cardsList);//将卡片对象存到数组中
-        this.timer = null;//定时器
-        this.cssObj = {};//样式存储对象
+        this.mediant = Math.floor(this.cardsNum / 2); //中间数
+        this.cardsListArr = [].slice.call(this.cardsList); //将卡片对象存到数组中
+        this.timer = null; //定时器
+        this.cssObj = {}; //样式存储对象
 
         this.certainStyle();
         this.switchEffect();
         this.cardsClick();
         this.switchBtnClick();
-        // this.autoMove();
+        this.autoMove();
         this.tabChange();
         this.switchTimer();
 
@@ -56,11 +56,11 @@
             if (this.scale) {
                 this.scale.length == 1 && this.scale.push(this.scale[0]);
             };
-            if(this.direction == 'horizontal'){
+            if (this.direction == 'horizontal') {
                 this.cssObj.left = '50%';
                 this.availSize = this.ele.outerWidth();
                 this.cardSize = this.cardsList.eq(0).outerWidth();
-            }else if(this.direction == 'vertical'){
+            } else if (this.direction == 'vertical') {
                 this.cssObj.top = '50%';
                 this.availSize = this.ele.outerHeight();
                 this.cardSize = this.cardsList.eq(0).outerHeight();
@@ -73,11 +73,11 @@
         //动态样式
         dynamicStyle: function (offsetIndex, offsetIndexAbs, reset) {
             //根据方向确定margin的left或者top值
-            if(this.direction == 'horizontal'){
-                this.cssObj.marginLeft = - this.cardSize / 2 + this.offsetDistance * offsetIndex + 'px';
+            if (this.direction == 'horizontal') {
+                this.cssObj.marginLeft = -this.cardSize / 2 + this.offsetDistance * offsetIndex + 'px';
                 // this.cssObj.marginTop = ($('.secthree .container').height() - $('.secthree .container .cards_list').height()) / 2 + 'px';
-            }else if(this.direction == 'vertical'){
-                this.cssObj.marginTop = - this.cardSize / 2 + this.offsetDistance * offsetIndex + 'px';
+            } else if (this.direction == 'vertical') {
+                this.cssObj.marginTop = -this.cardSize / 2 + this.offsetDistance * offsetIndex + 'px';
             };
             //设置z-index
             this.cssObj.zIndex = reset;
@@ -109,26 +109,26 @@
                 $(e).attr('n', i);
             });
             $(carousel.cardsListArr).each(function (i, e) {
-                $(e).addClass('card'+i);
+                $(e).addClass('card' + i);
             })
         },
-        delClass: function() {
+        delClass: function () {
             var carousel = this;
             $(carousel.cardsListArr).each(function (i, e) {
-                $(e).removeClass('card'+i);
+                $(e).removeClass('card' + i);
             })
         },
 
         cardsClick: function () {
-            
+
             if (this.isClickCard) {
                 var carousel = this;
                 $(carousel.cardsListArr).on('click', function () {
                     let activeIndex = $('.demo1 .container li').index($(this)) + 1;
-                    $('.secthree .itembox .item:nth-child('+activeIndex+')').siblings().removeClass('active');
-                    $('.secthree .itembox .item:nth-child('+activeIndex+')').addClass('active');
-                    $('.secthree .difbox:nth-child('+activeIndex+')').siblings().css('display', 'none');
-                    $('.secthree .difbox:nth-child('+activeIndex+')').css('display', 'block');
+                    $('.secthree .itembox .item:nth-child(' + activeIndex + ')').siblings().removeClass('active');
+                    $('.secthree .itembox .item:nth-child(' + activeIndex + ')').addClass('active');
+                    $('.secthree .difbox:nth-child(' + activeIndex + ')').siblings().css('display', 'none');
+                    $('.secthree .difbox:nth-child(' + activeIndex + ')').css('display', 'block');
                     carousel.n = $(this).attr('n');
                     carousel.delClass();
                     carousel.switchEffect();
@@ -136,7 +136,7 @@
             };
         },
 
-        
+
 
         prev: function () {
             var carousel = this;
@@ -148,13 +148,13 @@
             let nowIndex = $('.secthree .itembox .item').index($('.secthree .itembox .active'));
             let newIndex = nowIndex + 1;
             newIndex--;
-            if(nowIndex == 0) {
+            if (nowIndex == 0) {
                 newIndex = carousel.cardsListArr.length;
             }
-            $('.secthree .itembox .item:nth-child('+newIndex+')').siblings().removeClass('active');
-            $('.secthree .itembox .item:nth-child('+newIndex+')').addClass('active');
-            $('.secthree .difbox:nth-child('+newIndex+')').siblings().css('display', 'none');
-            $('.secthree .difbox:nth-child('+newIndex+')').css('display', 'block');
+            $('.secthree .itembox .item:nth-child(' + newIndex + ')').siblings().removeClass('active');
+            $('.secthree .itembox .item:nth-child(' + newIndex + ')').addClass('active');
+            $('.secthree .difbox:nth-child(' + newIndex + ')').siblings().css('display', 'none');
+            $('.secthree .difbox:nth-child(' + newIndex + ')').css('display', 'block');
         },
 
         next: function () {
@@ -167,13 +167,13 @@
             let nowIndex = $('.secthree .itembox .item').index($('.secthree .itembox .active'));
             let newIndex = nowIndex + 1;
             newIndex++;
-            if(nowIndex == carousel.cardsListArr.length - 1) {
+            if (nowIndex == carousel.cardsListArr.length - 1) {
                 newIndex = 1;
             }
-            $('.secthree .itembox .item:nth-child('+newIndex+')').siblings().removeClass('active');
-            $('.secthree .itembox .item:nth-child('+newIndex+')').addClass('active');
-            $('.secthree .difbox:nth-child('+newIndex+')').siblings().css('display', 'none');
-            $('.secthree .difbox:nth-child('+newIndex+')').css('display', 'block');
+            $('.secthree .itembox .item:nth-child(' + newIndex + ')').siblings().removeClass('active');
+            $('.secthree .itembox .item:nth-child(' + newIndex + ')').addClass('active');
+            $('.secthree .difbox:nth-child(' + newIndex + ')').siblings().css('display', 'none');
+            $('.secthree .difbox:nth-child(' + newIndex + ')').css('display', 'block');
         },
 
         switchBtnClick: function () {
@@ -210,23 +210,23 @@
             };
         },
 
-        tabChange: function() {
+        tabChange: function () {
             if (this.changeByTab) {
                 var carousel = this;
                 var timer;
-                $('.secthree .itembox .item').on('mouseover', function() {
+                $('.secthree .itembox .item').on('mouseover', function () {
                     timer = setTimeout(() => {
                         let activeIndex = $('.secthree .itembox .item').index(this);
                         $(this).siblings().removeClass('active');
                         $(this).addClass('active');
-                        $('.secthree .difbox:nth-child('+(activeIndex+1)+')').siblings().css('display', 'none');
-                        $('.secthree .difbox:nth-child('+(activeIndex+1)+')').css('display', 'block');
+                        $('.secthree .difbox:nth-child(' + (activeIndex + 1) + ')').siblings().css('display', 'none');
+                        $('.secthree .difbox:nth-child(' + (activeIndex + 1) + ')').css('display', 'block');
                         carousel.n = $(carousel.cardsList[activeIndex]).attr('n');
                         carousel.delClass();
                         carousel.switchEffect();
                     }, 50);
                 })
-                $('.secthree .itembox .item').on('mouseout', function() {
+                $('.secthree .itembox .item').on('mouseout', function () {
                     clearTimeout(timer);
                 })
             };
